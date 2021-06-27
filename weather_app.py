@@ -9,7 +9,7 @@ forecast = own.weather_manager().weather_at_zip_code("48603", "US")
 current_weather = forecast.weather
 status = current_weather.status.lower().strip()
 humidity = current_weather.humidity
-tempreture = current_weather.temp["temp"]
+tempreture = current_weather.temperature("fahrenheit")["temp"]
 heatindex = current_weather.heat_index
 wind = current_weather.wnd["speed"]
 
