@@ -1,11 +1,11 @@
-from pyowm import OWM, owm
+from pyowm import OWM
 from twilio.rest import Client
-from credentials import account_sid, auth_token, my_twilio_phone, my_phone_number
+from my_data import account_sid, auth_token, my_twilio_phone, my_phone_number
 
-own = OWM('14d97b9f127c2c5f2154cbf1d955b50f')
+own = OWM('#######################################')
 
 
-forecast = own.weather_manager().weather_at_zip_code("48503", "US")
+forecast = own.weather_manager().weather_at_zip_code("48603", "US")
 current_weather = forecast.weather
 status = current_weather.status.lower().strip()
 humidity = current_weather.humidity
@@ -31,7 +31,7 @@ def send_sms():
             from_  = my_twilio_phone,
             to = my_phone_number,
             body = f'''
-                    You dont need umbrella today. Today's: \n 1. Sky is {status}. \n 2. Humidity is {humidity}\n 3. Tempreture is {tempreture}\n 4. Heat Index is {heatindex} \n 5. Wind is {wind}.
+                    You dont need umbrella today. Today's: \n 1. There's {status}. \n 2. Humidity is {humidity}\n 3. Tempreture is {tempreture}\n 4. Heat Index is {heatindex} \n 5. Wind is {wind}.
             
             '''
         )
@@ -40,7 +40,7 @@ def send_sms():
             from_  = my_twilio_phone,
             to = my_phone_number,
             body = f'''
-                    Alert!!! You need umbrella today. Today's: \n 1. Sky is {status}. \n 2. Humidity is {humidity}\n 3. Tempreture is {tempreture}\n 4. Heat Index is {heatindex} \n 5. Wind is {wind}.
+                    Alert!!! You need umbrella today. Today's: \n 1. There's {status}. \n 2. Humidity is {humidity}\n 3. Tempreture is {tempreture}\n 4. Heat Index is {heatindex} \n 5. Wind is {wind}.
             
             '''
         )
